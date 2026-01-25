@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Home - My Website{% endblock %}
+{% load static %}
+{% block content %}
+
+
+<div class="b1e3a5a-ae71-43f5-8561-b9d06d17b4c8">
+    <div class="author_statsboard">
+        <div class="booknumber">
+            <h1>No. Book Published</h1>
+            <h1>{{published}}</h1>
+        </div>
+        <div class="bookdownload">
+            <h1>No. Book Download</h1>
+            <h1>{{downloads}}</h1>
+        </div>
+    </div>
+    <div class="bookpublished">
+        {% for book in books %}
+        <div class="authorbook">
+            <img src="{{book.book_cover_page.url}}" alt="">
+            <h3>{{book.book_name}}</h3>
+            <button> <a href="{% url "view_book" id=book.book_id %}">View book</a> </button>
+            <button><a href="{% url "edit_book" id=book.book_id %}">Edit book</a>  </button>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

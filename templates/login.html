@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Signup{% endblock %}
+{% load static %}
+{% block content %}
+
+
+<div class="a517-bb06-4f96-9e47-9ffe49da90d2">
+    <div class="d3d9ba94-97cb-4a1c-9cf0-cf9b81482269">
+        <img src="{% static 'image/signup.png' %}" alt="">
+    </div>
+    <div class="fb524cf-c40a-4b93-8da7-9b51bf759f32">
+        <form action="" method="post">
+            <h1>LOGIN</h1>
+            {% csrf_token %}
+            <div>
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" required>
+            </div>
+            <div>
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" required>
+            </div>
+            <input type="submit" value="submit">
+        </form>
+    </div>
+</div>
+
+{% endblock %}

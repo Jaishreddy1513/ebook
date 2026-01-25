@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     'author'
 ]
 
+AUTH_USER_MODEL = 'user.Custom_User'
+
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -124,3 +127,12 @@ STATICFILES_DIRS = [
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR/"media"
+
+
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'openebookhub@gmail.com'
+EMAIL_HOST_PASSWORD = "qevx txhe yfxz pucu"
+EMAIL_USE_TLS = True
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

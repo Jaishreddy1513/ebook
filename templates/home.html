@@ -8,7 +8,19 @@
     <div>
         <h1>Discover Your Next Great Read</h1>
         <p>Explore thousands of books across all genres. From bestsellers to hidden gems, find the perfect book for every moment.</p>
-        <button>Explore Books</button>
+        {% if not user.is_authenticated %}
+        {% if "/author/" in request.path %}
+        <button><a href="/author/signup/">Explore Books</a></button>
+        {% else %}
+        <button><a href="/signup/">Explore Books</a></button>
+        {% endif %}
+        {% else %}
+        {% if "/author/" in request.path %}
+        <button><a href="/author/dashboard/">Dashboard</a></button>
+        {% else %}
+        <button><a href="/dashboard/">Dashboard</a></button>
+        {% endif %}
+        {% endif %}
     </div>
 </div>
 

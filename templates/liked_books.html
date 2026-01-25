@@ -1,0 +1,57 @@
+{% extends "base.html" %} {% block title %}Home - My Website{% endblock %} {%
+load static %} {% block content %}
+
+<div class="c990a17b-f8a9-49d8-b85f-f3fd4b604e13">
+  <div class="liked_list">
+    {% for book in liked_list %}
+    <div class="liked_book">
+      <img src="{{book.book_id.book_cover_page.url}}" alt="" />
+      <div>
+        <h2>{{book.book_id.book_name}}</h2>
+        <p>{{book.book_id.book_description | truncatewords:50}}</p>
+      </div>
+      <button><a href="{% url "user_view_book" id=book.book_id.book_id%}">view book</a></button>
+      <a href="{% url "unlike_book" id=book.book_id.book_id %}"><i class="fa-solid fa-heart" style="color: #ff0000"></i></a>
+    </div>
+    {% endfor %} {% comment %}
+    <div class="liked_book">
+      <img src="{% static 'image/signup.png' %}" alt="" />
+      <div>
+        <h2>book_name</h2>
+        <p>book_desc</p>
+      </div>
+      <button>view book</button>
+      <i class="fa-solid fa-heart" style="color: #ff0000"></i>
+    </div>
+    <div class="liked_book">
+      <img src="{% static 'image/signup.png' %}" alt="" />
+      <div>
+        <h2>book_name</h2>
+        <p>book_desc</p>
+      </div>
+      <button>view book</button>
+      <i class="fa-solid fa-heart" style="color: #ff0000"></i>
+    </div>
+    <div class="liked_book">
+      <img src="{% static 'image/signup.png' %}" alt="" />
+      <div>
+        <h2>book_name</h2>
+        <p>book_desc</p>
+      </div>
+      <button>view book</button>
+      <i class="fa-solid fa-heart" style="color: #ff0000"></i>
+    </div>
+    <div class="liked_book">
+      <img src="{% static 'image/signup.png' %}" alt="" />
+      <div>
+        <h2>book_name</h2>
+        <p>book_desc</p>
+      </div>
+      <button>view book</button>
+      <i class="fa-solid fa-heart" style="color: #ff0000"></i>
+    </div>
+    {% endcomment %}
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block title %}Home - My Website{% endblock %}
+{% load static %}
+{% block content %}
+
+
+
+
+<div class="fdb0aa04-ea56-4d64-ac3e-6c45d3360e2c">
+    <form action="" method="POST" enctype="multipart/form-data">
+        <h1>Upload Your Book</h1>
+        {% csrf_token %}
+        <div>
+            <label for="book_name">Book Name:</label>
+            <input type="text" id="book_name" name="book_name" required>
+        </div>
+
+        <div>
+            <label for="book_title">Book Title:</label>
+            <input type="text" id="book_title" name="book_title" required>
+        </div>
+
+        <div>
+            <label for="book_description">Description:</label>
+            <textarea id="book_description" name="book_description" rows="4"></textarea>
+        </div>
+
+        <div>
+            <label for="book_genres">Genre:</label>
+            <select id="book_genres" name="book_genres">
+                <option value="FICTION">Fiction</option>
+                <option value="FANTASY">Fantasy</option>
+                <option value="MYSTERY">Mystery</option>
+                <option value="ROMANCE">Romance</option>
+                <option value="SCIENCE">Science</option>
+                <option value="TECHNOLOGY">Technology</option>
+                <option value="BUSINESS">Business</option>
+                <option value="SELF-HELP">Self-Help</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="book_cover_page">Cover Image:</label>
+            <input type="file" id="book_cover_page" name="book_cover_page" accept="image/*">
+        </div>
+
+        <div>
+            <label for="book_pdf">Book PDF:</label>
+            <input type="file" id="book_pdf" name="book_pdf" accept=".pdf">
+        </div>
+
+        <button type="submit">Upload Book</button>
+    </form>
+</div>
+
+
+{% endblock %}

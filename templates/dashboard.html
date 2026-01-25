@@ -1,0 +1,36 @@
+{% extends "base.html" %} {% block title %}Home - My Website{% endblock %} {%
+load static %} {% block content %}
+
+<div class="cf2d6-c899-43fa-97c4-9c8e9abd67f9">
+  <div class="genres_wrapper">
+    <div class="genres_list">
+      <a href="/dashboard/" class="genre-card">All</a>
+      <a href="/genre/fiction/" class="genre-card">Fiction</a>
+      <a href="/genre/fantasy/" class="genre-card">Fantasy</a>
+      <a href="/genre/mystery/" class="genre-card">Mystery</a>
+      <a href="/genre/romance/" class="genre-card">Romance</a>
+      <a href="/genre/science/" class="genre-card">Science</a>
+      <a href="/genre/technology/" class="genre-card">Technology</a>
+      <a href="/genre/business/" class="genre-card">Business</a>
+      <a href="/genre/self-help/" class="genre-card">Self-Help</a>
+    </div>
+  </div>
+</div>
+
+<div class="bd3f5beb-e7b3-48ed-9288-6d044fe36808">
+  <div class="book_wrapper">
+    {% for book in books%}
+    <div class="book">
+      <img src="{{book.book_cover_page.url}}" alt="" />
+      {% if book.book_id in liked_list %}
+      <a href="{% url "unlike_book" id=book.book_id%}"><i class="fa-solid fa-heart" style="color: #ff0000"></i></a>
+      {% else %}
+      <a href="{% url "like_book" id=book.book_id%}"><i class="fa-solid fa-heart"></i></a>
+      {% endif %}
+      <h2>{{book.book_name}}</h2>
+      <button><a href="{% url "user_view_book" id=book.book_id%}">view book</a></button>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

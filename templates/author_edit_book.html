@@ -1,0 +1,111 @@
+{% extends "base.html" %} {% block title %}Home - My Website{% endblock %} {%
+load static %} {% block content %}
+
+<div class="fdb0aa04-ea56-4d64-ac3e-6c45d3360e2c">
+  <form action="" method="POST" enctype="multipart/form-data">
+    <h1>Updata Book</h1>
+    {% csrf_token %}
+
+    <div class="form-group">
+      <label for="book_name">Book Name:</label>
+      <input
+        type="text"
+        id="book_name"
+        name="book_name"
+        value="{{ author_book.book_name }}"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="book_title">Book Title:</label>
+      <input
+        type="text"
+        id="book_title"
+        name="book_title"
+        value="{{ author_book.book_title }}"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="book_description">Description:</label>
+      <textarea id="book_description" name="book_description" rows="4">
+{{ author_book.book_description }}</textarea
+      >
+    </div>
+
+    <div class="form-group">
+      <label for="book_genres">Genre:</label>
+      <select id="book_genres" name="book_genres">
+        {% with current_genre=author_book.book_genres %}
+        <option
+          value="FICTION"
+          {%if current_genre == "FICTION"%}selected{%endif%}
+        >
+          Fiction
+        </option>
+        <option
+          value="FANTASY"
+          {%if current_genre == "FANTASY"%}selected{%endif%}
+        >
+          Fantasy
+        </option>
+        <option
+          value="MYSTERY"
+          {% if current_genre == "MYSTERY"%}selected{%endif%}
+        >
+          Mystery
+        </option>
+        <option
+          value="ROMANCE"
+          {% if current_genre == "ROMANCE"%}selected{%endif%}
+        >
+          Romance
+        </option>
+        <option
+          value="SCIENCE"
+          {%if current_genre == "SCIENCE"%}selected{%endif%}
+        >
+          Science
+        </option>
+        <option
+          value="TECHNOLOGY"
+          {%if current_genre == "TECHNOLOGY"%}selected{%endif%}
+        >
+          Technology
+        </option>
+        <option
+          value="BUSINESS"
+          {%if current_genre == "BUSINESS"%}selected{%endif%}
+        >
+          Business
+        </option>
+        <option
+          value="SELF-HELP"
+          {%if current_genre == "SELF-HELP"%}selected{%endif%}
+        >
+          Self-Help
+        </option>
+        {% endwith %}
+      </select>
+    </div>
+    <div>
+      <label for="book_cover_page">Cover Image:</label>
+      <input
+        type="file"
+        id="book_cover_page"
+        name="book_cover_page"
+        accept="image/*"
+      />
+    </div>
+
+    <div>
+      <label for="book_pdf">Book PDF:</label>
+      <input type="file" id="book_pdf" name="book_pdf" accept=".pdf" />
+    </div>
+    <button type="submit">Update Book Information</button>
+  </form>
+</div>
+
+{% endblock %}

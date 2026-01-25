@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Home - My Website{% endblock %}
+{% load static %}
+{% block content %}
+
+
+<div class="bd7d529-c5dd-40d3-8cf6-ea4ab30fe7d4">
+    <div class="img_diplay">
+        <img src="{{book.book_cover_page.url}}" alt="">
+    </div>
+    <div class="details">
+        <h1>{{book.book_name}}</h1>
+        <h3>{{book.book_title}}</h3>
+        <p>{{book.book_description | truncatewords:100}}</p>
+        <div>
+            <button><a href="{% url "user_download_book" id=book.book_id %}">DOWNLOAD</a></button>
+            {% if book.book_id in liked_list %}
+      <a href="{% url "unlike_book" id=book.book_id%}"><i class="fa-solid fa-heart" style="color: #ff0000"></i></a>
+      {% else %}
+      <a href="{% url "like_book" id=book.book_id%}"><i class="fa-solid fa-heart"></i></a>
+      {% endif %}
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

@@ -1,26 +1,151 @@
 {% load static %}
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{% block title %}{% endblock %}</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
-  </head>
-  <body>
-    <nav>
-        <div class="bd70669d-3dcb-44fd-b548-3bdc331fc83d">
-            <div class="a7ae2ca-6b43-4335-b86f-8da34b58b640">
-                <img src="{% static 'image/logo.png' %}" alt="">
-                <h1>BOOKHUB</h1>
-            </div>
-            <!-- not login -->
-            <div class="b30f08e-d840-4cf0-9869-e3c97a0bf3bd">
-                <button><a href="">Login</a></button>
-                <button><a href="">Signup</a></button>
-            </div>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}{% endblock %}</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+  {% if messages %}
+  <style>
+    /* Position the container at the top center */
+    .messages-top-center {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 9999;
+      width: 100%;
+      max-width: 400px;
+      pointer-events: none;
+    }
+
+    /* Modern Alert Styling */
+    .custom-alert {
+      pointer-events: auto;
+      border: none !important;
+      border-radius: 12px !important;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      background-color: #ffffff;
+      padding: 1rem 1.5rem !important;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      /* Animation for appearing */
+      animation: slideInDown 0.5s ease-out forwards;
+    }
+
+    /* Animation for disappearing (triggered by JS) */
+    .fade-out-up {
+      animation: slideOutUp 0.5s ease-in forwards;
+    }
+
+    @keyframes slideInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideOutUp {
+      from { opacity: 1; transform: translateY(0); }
+      to { opacity: 0; transform: translateY(-20px); }
+    }
+    .custom-alert.success { border-left: 5px solid #10b981; }
+    .custom-alert.error { border-left: 5px solid #ef4444; }
+    .custom-alert.warning { border-left: 5px solid #f59e0b; }
+    .custom-alert.info { border-left: 5px solid #3b82f6; }
+  </style>
+
+  <div class="messages-top-center">
+    {% for message in messages %}
+      <div class="alert custom-alert {{ message.tags }} alert-dismissible fade show j-message" role="alert">
+        <div class="d-flex align-items-center">
+          <span style="font-weight: 500;">{{ message }}</span>
         </div>
-    </nav>
-    {% block content %}{% endblock %}
-  </body>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" style="font-size: 0.8rem;"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+    {% endfor %}
+  </div>
+
+  <script>
+    // Wait for the DOM to be fully loaded
+    document.addEventListener('DOMContentLoaded', function() {
+      // Select all messages
+      const messages = document.querySelectorAll('.j-message');
+      
+      messages.forEach(function(message) {
+        // Set a timeout to start the disappearance after 5 seconds
+        setTimeout(function() {
+          // Add the fade-out animation class
+          message.classList.add('fade-out-up');
+          
+          // Actually remove the element from the DOM after the animation finishes (500ms)
+          setTimeout(function() {
+            message.remove();
+          }, 500);
+          
+        }, 5000); // 5000 milliseconds = 5 seconds
+      });
+    });
+  </script>
+{% endif %}
+  <nav>
+    <div class="bd70669d-3dcb-44fd-b548-3bdc331fc83d">
+      {% if "/author/" in request.path %}
+      <a href="/author/">
+        <div class="a7ae2ca-6b43-4335-b86f-8da34b58b640">
+          <img src="{% static 'image/logo.png' %}" alt="" />
+          <h1>BOOKHUB</h1>
+        </div>
+      </a>
+      {% else %}
+      <a href="/">
+        <div class="a7ae2ca-6b43-4335-b86f-8da34b58b640">
+          <img src="{% static 'image/logo.png' %}" alt="" />
+          <h1>BOOKHUB</h1>
+        </div>
+      </a>
+      {% endif %}
+      {% if user.is_authenticated %}
+      {% if "/author/" in request.path %}
+      <div class="b30f08e-d840-4cf0-9869-e3c97a0bf3bd">
+        <button><a href="/author/create_book/">Create book</a></button>
+        <button><a href="/author/dashboard/">Dashboard</a></button>
+        <button><a href="/author/logout/">Logout</a></button>
+      </div>
+      {% else %}
+      <div class="b30f08e-d840-4cf0-9869-e3c97a0bf3bd">
+        <button><a href="/liked_books/">Liked books</a></button>
+        <button><a href="/dashboard/">Dashboard</a></button>
+        <button><a href="/logout/">Logout</a></button>
+      </div>
+      {% endif %}
+      {% else %}
+      {% if "/author/" in request.path %}
+      <div class="b30f08e-d840-4cf0-9869-e3c97a0bf3bd">
+        <button><a href="/author/login/">Login</a></button>
+        <button><a href="/author/signup/">Signup</a></button>
+      </div>
+      {% else %}
+      <div class="b30f08e-d840-4cf0-9869-e3c97a0bf3bd">
+        <button><a href="/login/">Login</a></button>
+        <button><a href="/signup/">Signup</a></button>
+      </div>
+      {% endif %}
+      {% endif %}
+    </div>
+  </nav>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"></script>
+  {% block content %}{% endblock %}
+</body>
+
 </html>
