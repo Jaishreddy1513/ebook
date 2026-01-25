@@ -1,0 +1,26 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+  </head>
+  <body>
+    <nav>
+        <div class="bd70669d-3dcb-44fd-b548-3bdc331fc83d">
+            <div class="a7ae2ca-6b43-4335-b86f-8da34b58b640">
+                <img src="{% static 'image/logo.png' %}" alt="">
+                <h1>BOOKHUB</h1>
+            </div>
+            <!-- not login -->
+            <div class="b30f08e-d840-4cf0-9869-e3c97a0bf3bd">
+                <button><a href="">Login</a></button>
+                <button><a href="">Signup</a></button>
+            </div>
+        </div>
+    </nav>
+    {% block content %}{% endblock %}
+  </body>
+</html>

@@ -1,0 +1,98 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+
+body {
+    background: #F2EBD8;
+    padding: 0 60px;
+}
+
+/* navber */
+nav {
+    height: 15vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: sticky;
+    top: 0;
+}
+
+.bd70669d-3dcb-44fd-b548-3bdc331fc83d {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.a7ae2ca-6b43-4335-b86f-8da34b58b640 img {
+    height: 40px;
+}
+
+.a7ae2ca-6b43-4335-b86f-8da34b58b640 {
+    display: flex;
+    justify-content: space-betweeen;
+    align-items: center;
+}
+
+.b30f08e-d840-4cf0-9869-e3c97a0bf3bd {
+    display: flex;
+    justify-content: space-betweeen;
+    align-items: center;
+    gap: 40px;
+}
+
+.b30f08e-d840-4cf0-9869-e3c97a0bf3bd button {
+    height: 40px;
+    width: 80px;
+    border: 2px solid black;
+    border-radius: 25px;
+    background: #371d0e;
+}
+
+.b30f08e-d840-4cf0-9869-e3c97a0bf3bd button a {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* home page */
+
+
+.cd164d84-8210-4ce8-9f53-add6a4ae410 {
+    height: 80vh;
+    background: url(../image/hero_img.jpeg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.cd164d84-8210-4ce8-9f53-add6a4ae410 div {
+    height: 80%;
+    padding: 100px 80px;
+    /* border: red solid 2px; */
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.cd164d84-8210-4ce8-9f53-add6a4ae410 p {
+    color: #fff;
+    text-align: center;
+    font-size: 30px;
+}
+
+.cd164d84-8210-4ce8-9f53-add6a4ae410 button {
+    height: 100px;
+    width: 300px;
+}
+
+.cd164d84-8210-4ce8-9f53-add6a4ae410 h1 {
+    color: #fff;
+    text-align: center;
+    font-size: 90px;
+    font-style: italic;
+    font-weight: 300;
+}
