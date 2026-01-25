@@ -81,7 +81,6 @@ nav {
 .cd164d84-8210-4ce8-9f53-add6a4ae410 div {
     height: 80%;
     padding: 70px;
-    /* border: red solid 2px; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -96,7 +95,6 @@ nav {
 }
 
 .cd164d84-8210-4ce8-9f53-add6a4ae410 button {
-    /* border: red solid 2px; */
     width: 300px;
     height: 100px;
     font-size: 25px;
@@ -127,14 +125,12 @@ nav {
     display: flex;
     justify-content: center;
 
-    /* border: red solid 2px; */
     gap: 40px;
     height: 80vh;
 }
 
 .d3d9ba94-97cb-4a1c-9cf0-cf9b81482269 {
     flex-basis: 50%;
-    /* border: red solid 2px; */
 }
 
 .d3d9ba94-97cb-4a1c-9cf0-cf9b81482269 img {
@@ -181,12 +177,10 @@ nav {
     justify-content: center;
     align-items: center;
     gap: 40px;
-    /* border: red solid 2px; */
 }
 
 .fb524cf-c40a-4b93-8da7-9b51bf759f32 {
     flex-basis: 50%;
-    /* border: red solid 2px; */
     height: 100%;
     display: flex;
     justify-content: center;
@@ -230,7 +224,6 @@ nav {
 /* books */
 
 .bd3f5beb-e7b3-48ed-9288-6d044fe36808 {
-    /* border: red solid 2px; */
 }
 
 .book img {
@@ -251,7 +244,6 @@ nav {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    /* border: red solid 2px; */
     background: #F2EBD8;
     gap: 20px;
     border-radius: 20px;
@@ -272,7 +264,6 @@ nav {
 }
 
 .book_wrapper {
-    /* border: red solid 2px; */
     background: white;
     display: flex;
     padding: 40px;
@@ -283,7 +274,6 @@ nav {
 
 
 .c990a17b-f8a9-49d8-b85f-f3fd4b604e13 {
-    /* border: red solid 2px; */
 }
 
 
@@ -314,13 +304,11 @@ nav {
 }
 
 .liked_book img {
-    /* border: red solid 2px; */
     height: 100%;
 }
 
 .liked_book div {
     padding: 20px 40px;
-    /* border: red solid 2px; */
     height: 100%;
     flex-basis: 60%;
     display: flex;
@@ -353,7 +341,6 @@ nav {
 
 .bd7d529-c5dd-40d3-8cf6-ea4ab30fe7d4 {
     height: 80vh;
-    /* border: red solid 2px; */
     display: flex;
     justify-content: space-between;
     border-radius: 40px;
@@ -367,19 +354,16 @@ nav {
     flex-basis: 50%;
     display: flex;
     justify-content: center;
-    /* border: red solid 2px; */
     background-color: white;
 }
 
 .img_diplay img {
     height: 100%;
-    /* border: red solid 2px; */
 }
 
 .details {
     height: 100%;
     flex-basis: 50%;
-    /* border: red solid 2px; */
     display: flex;
     justify-content: start;
     flex-direction: column;
@@ -390,15 +374,12 @@ nav {
 }
 
 .details h1 {
-    /* border: red solid 2px; */
 }
 
 .details h3 {
-    /* border: red solid 2px; */
 }
 
 .details p {
-    /* border: red solid 2px; */
 }
 
 .details div {
@@ -408,7 +389,6 @@ nav {
     align-items: center;
     gap: 90px;
     height: 60px;
-    /* border: red solid 2px; */
 }
 
 .details div button {
@@ -429,7 +409,6 @@ nav {
 /* verification */
 .b2762276-ba44-44a0-9a10-b184562de005 {
     height: 80vh;
-    /* border: red solid 2px; */
     display: flex;
     justify-content: center;
     border-radius: 40px;
@@ -443,7 +422,6 @@ nav {
     border-radius: 25px;
     height: 80%;
     width: 50%;
-    /* border: red solid 2px; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -494,12 +472,10 @@ input::-webkit-inner-spin-button {
 
 .b1e3a5a-ae71-43f5-8561-b9d06d17b4c8 {
     height: 80vh;
-    /* border: red solid 2px; */
 }
 
 .author_statsboard {
     height: 40%;
-    /* border: red solid 2px; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -510,7 +486,6 @@ input::-webkit-inner-spin-button {
 .booknumber {
     flex-basis: 50%;
     height: 100%;
-    /* border: red solid 2px; */
     background: white;
     border-radius: 25px;
     justify-content: center;
@@ -524,7 +499,6 @@ input::-webkit-inner-spin-button {
 .bookdownload {
     flex-basis: 50%;
     height: 100%;
-    /* border: red solid 2px; */
     background: white;
     border-radius: 25px;
     justify-content: center;
@@ -537,7 +511,6 @@ input::-webkit-inner-spin-button {
 
 .bookpublished {
     height: 60%;
-    /* border: red solid 2px; */
     background: white;
     border-radius: 25px;
     padding: 20px 80px;
@@ -559,7 +532,6 @@ input::-webkit-inner-spin-button {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    /* border: red solid 2px; */
     background: #F2EBD8;
     gap: 20px;
     border-radius: 20px;
