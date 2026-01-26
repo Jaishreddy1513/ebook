@@ -79,7 +79,7 @@ def verification_user(request,id):
                     return redirect("login")
                 else:
                     messages.error(request,"Invalid OTP")
-                    return render(request,"verification_page.html")
+                    return render(request,"verification.html")
         else:
             return redirect("login")
     except User.DoesNotExist:

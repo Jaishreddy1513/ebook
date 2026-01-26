@@ -97,17 +97,17 @@
   </script>
 {% endif %}
   <nav>
-    <div class="bd70669d-3dcb-44fd-b548-3bdc331fc83d">
+    <div class="Homepage-navbar">
       {% if "/author/" in request.path %}
       <a href="/author/">
-        <div class="a7ae2ca-6b43-4335-b86f-8da34b58b640">
+        <div class="Homepage-navbar-logo-img">
           <img src="{% static 'image/logo.png' %}" alt="" />
           <h1>BOOKHUB</h1>
         </div>
       </a>
       {% else %}
       <a href="/">
-        <div class="a7ae2ca-6b43-4335-b86f-8da34b58b640">
+        <div class="Homepage-navbar-logo-img">
           <img src="{% static 'image/logo.png' %}" alt="" />
           <h1>BOOKHUB</h1>
         </div>
@@ -115,13 +115,13 @@
       {% endif %}
       {% if user.is_authenticated %}
       {% if "/author/" in request.path %}
-      <div class="b30f08e-d840-4cf0-9869-e3c97a0bf3bd">
+      <div class="Homepage-author-user-common-page">
         <button><a href="/author/create_book/">Create book</a></button>
         <button><a href="/author/dashboard/">Dashboard</a></button>
         <button><a href="/author/logout/">Logout</a></button>
       </div>
       {% else %}
-      <div class="b30f08e-d840-4cf0-9869-e3c97a0bf3bd">
+      <div class="Homepage-author-user-common-page">
         <button><a href="/liked_books/">Liked books</a></button>
         <button><a href="/dashboard/">Dashboard</a></button>
         <button><a href="/logout/">Logout</a></button>
@@ -129,12 +129,12 @@
       {% endif %}
       {% else %}
       {% if "/author/" in request.path %}
-      <div class="b30f08e-d840-4cf0-9869-e3c97a0bf3bd">
+      <div class="Homepage-author-user-common-page">
         <button><a href="/author/login/">Login</a></button>
         <button><a href="/author/signup/">Signup</a></button>
       </div>
       {% else %}
-      <div class="b30f08e-d840-4cf0-9869-e3c97a0bf3bd">
+      <div class="Homepage-author-user-common-page">
         <button><a href="/login/">Login</a></button>
         <button><a href="/signup/">Signup</a></button>
       </div>
