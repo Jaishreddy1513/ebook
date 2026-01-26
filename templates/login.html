@@ -4,12 +4,14 @@
 {% block content %}
 
 
-<div class="a517-bb06-4f96-9e47-9ffe49da90d2">
-    <div class="d3d9ba94-97cb-4a1c-9cf0-cf9b81482269">
-        <img src="{% static 'image/signup.png' %}" alt="">
+<div class="signup-main">
+  <div class="signup-img">
+    <div>
+      <img src="{% static 'image/signup-page.jpg' %}" alt="" />
     </div>
-    <div class="fb524cf-c40a-4b93-8da7-9b51bf759f32">
-        <form action="" method="post">
+  </div>
+  <div class="signup-container">
+    <form action="" method="post">
             <h1>LOGIN</h1>
             {% csrf_token %}
             <div>
