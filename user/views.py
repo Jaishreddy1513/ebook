@@ -84,6 +84,8 @@ def verification_user(request,id):
             return redirect("login")
     except User.DoesNotExist:
         return redirect("signup")
+    except UserVerification.DoesNotExist:
+        return redirect("signup")
     return render(request,"verification.html")
 
 
