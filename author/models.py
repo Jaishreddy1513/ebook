@@ -22,15 +22,15 @@ class AuthorVerification(models.Model):
         return self.author_data.email
     
     
-def book_path(instance, filename):
+def book_path(obj, filename):
     ext = filename.split('.')[-1]
-    unique_name = f"{instance.book_id}.{ext}"
-    return f"{instance.author_id.author_name}/Book_upload/{unique_name}"  
+    unique_name = f"{obj.book_id}.{ext}"
+    return f"{obj.author_id.author_name}/Book_upload/{unique_name}"  
 
-def book_pdf_path(instance, filename):
+def book_pdf_path(obj, filename):
     ext = filename.split('.')[-1]
-    unique_name = f"{instance.book_id}.{ext}"
-    return f"{instance.author_id.author_name}/Book_pdf/{unique_name}"  
+    unique_name = f"{obj.book_id}.{ext}"
+    return f"{obj.author_id.author_name}/Book_pdf/{unique_name}"  
     
 
 
