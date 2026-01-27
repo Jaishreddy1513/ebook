@@ -73,6 +73,8 @@ def verification_author(request,id):
             return redirect("author-login")
     except Author.DoesNotExist:
         return redirect("author-signup")
+    except AuthorVerification.DoesNotExist:
+        return redirect("author-signup")
     return render(request,"verification.html")
 
 
