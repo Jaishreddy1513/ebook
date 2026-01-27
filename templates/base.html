@@ -15,7 +15,6 @@
 <body>
   {% if messages %}
   <style>
-    /* Position the container at the top center */
     .messages-top-center {
       position: fixed;
       top: 20px;
@@ -27,7 +26,6 @@
       pointer-events: none;
     }
 
-    /* Modern Alert Styling */
     .custom-alert {
       pointer-events: auto;
       border: none !important;
@@ -43,7 +41,6 @@
       animation: slideInDown 0.5s ease-out forwards;
     }
 
-    /* Animation for disappearing (triggered by JS) */
     .fade-out-up {
       animation: slideOutUp 0.5s ease-in forwards;
     }
@@ -57,10 +54,10 @@
       from { opacity: 1; transform: translateY(0); }
       to { opacity: 0; transform: translateY(-20px); }
     }
-    .custom-alert.success { border-left: 5px solid #10b981; }
+    {% comment %} .custom-alert.success { border-left: 5px solid #10b981; }
     .custom-alert.error { border-left: 5px solid #ef4444; }
     .custom-alert.warning { border-left: 5px solid #f59e0b; }
-    .custom-alert.info { border-left: 5px solid #3b82f6; }
+    .custom-alert.info { border-left: 5px solid #3b82f6; } {% endcomment %}
   </style>
 
   <div class="messages-top-center">
@@ -75,23 +72,15 @@
   </div>
 
   <script>
-    // Wait for the DOM to be fully loaded
     document.addEventListener('DOMContentLoaded', function() {
-      // Select all messages
       const messages = document.querySelectorAll('.j-message');
-      
       messages.forEach(function(message) {
-        // Set a timeout to start the disappearance after 5 seconds
         setTimeout(function() {
-          // Add the fade-out animation class
           message.classList.add('fade-out-up');
-          
-          // Actually remove the element from the DOM after the animation finishes (500ms)
           setTimeout(function() {
             message.remove();
           }, 500);
-          
-        }, 5000); // 5000 milliseconds = 5 seconds
+        }, 5000);
       });
     });
   </script>
