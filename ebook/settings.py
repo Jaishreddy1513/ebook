@@ -27,6 +27,11 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# CSRF_TRUSTED_ORIGINS = ['https://confidentiality-strap-cycles-gabriel.trycloudflare.com']
+
+
+# SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
 
 # Application definition
 
@@ -38,7 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'user',
-    'author'
+    'author',
 ]
 
 AUTH_USER_MODEL = 'user.Custom_User'

@@ -1,4 +1,4 @@
-{% extends "base.html" %} {% block title %}Home - My Website{% endblock %} {%
+{% extends "base.html" %} {% block title %}liked book{% endblock %} {%
 load static %} {% block content %}
 
 <div class="liked_books-container">
@@ -8,7 +8,7 @@ load static %} {% block content %}
       <img src="{{book.book_id.book_cover_page.url}}" alt="" />
       <div>
         <h2>{{book.book_id.book_name}}</h2>
-        <p>{{book.book_id.book_description | truncatewords:50}}</p>
+        <p>{{book.book_id.book_description | truncatewords:30}}</p>
       </div>
       <button><a href="{% url "user_view_book" id=book.book_id.book_id%}">view book</a></button>
       <a href="{% url "unlike_book" id=book.book_id.book_id %}"><i class="fa-solid fa-heart" style="color: #ff0000"></i></a>

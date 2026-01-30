@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}Home - My Website{% endblock %}
+{% block title %}View-book{% endblock %}
 {% load static %}
 {% block content %}
 
@@ -11,7 +11,7 @@
     <div class="details">
         <h1>{{book.book_name}}</h1>
         <h3>{{book.book_title}}</h3>
-        <p>{{book.book_description | truncatewords:100}}</p>
+        <p>{{book.book_description | truncatewords:45}}</p>
         <div>
             <button><a href="{% url "user_download_book" id=book.book_id %}">DOWNLOAD</a></button>
             {% if book.book_id in liked_list %}

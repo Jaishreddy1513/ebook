@@ -1,4 +1,4 @@
-{% extends "base.html" %} {% block title %}Home - My Website{% endblock %} {%
+{% extends "base.html" %} {% block title %}BOOK Edit{% endblock %} {%
 load static %} {% block content %}
 
 <div class="author_book_create-form">
@@ -64,10 +64,10 @@ load static %} {% block content %}
           Romance
         </option>
         <option
-          value="SCIENCE"
-          {%if current_genre == "SCIENCE"%}selected{%endif%}
+          value="BIOGRAPHY"
+          {%if current_genre == "BIOGRAPHY"%}selected{%endif%}
         >
-          Science
+          Biography
         </option>
         <option
           value="TECHNOLOGY"

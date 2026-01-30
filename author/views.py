@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect
-from .models import Author,BookPublished,AuthorVerification,BooksDownload
+from django.http import HttpResponseRedirect,HttpResponse
+from .models import Author,BookPublished,AuthorVerification,BooksDownload,ResetPwVerification
 from user.models import Custom_User,User
 # from django.http import HttpRe
 
@@ -15,6 +16,20 @@ from django.conf import settings
 def send_email(recipient_email,otp):
     subject = 'Welcome to Our Website!'
     message = f'Continue by using {otp} this OTP'
+    from_email = settings.DEFAULT_FROM_EMAIL 
+    recipient_list = [recipient_email]
+
+    send_mail(
+        subject,
+        message,
+        from_email,
+        recipient_list,
+        fail_silently=False,
+    )
+
+def Reset_send_email(recipient_email,reset_link):
+    subject = 'Welcome to Our Website!'
+    message = f'Click the link below to reset your password:\n\n{reset_link}\n\nIf you did not request this, please ignore this email.'
     from_email = settings.DEFAULT_FROM_EMAIL # Uses the default from settings.py
     recipient_list = [recipient_email] # Must be a list
 
@@ -26,8 +41,6 @@ def send_email(recipient_email,otp):
         fail_silently=False,
     )
 
-
-
 def sigup_author(request):
     if request.method == "POST":
         name = request.POST.get("name")
@@ -36,7 +49,7 @@ def sigup_author(request):
         confirm_password = request.POST.get("confirm_password")
         if Author.objects.filter(author_details=email):
             messages.error(request,"Email already exist")
-            return render(request,"signup.html")
+            return render(request,"author_signup.html")
         else:
             if confirm_password == password:
                 user_data = Custom_User.objects.create_author(author_name=name,email=email,password=password)
@@ -45,8 +58,8 @@ def sigup_author(request):
                 return redirect("author-verification",id=user.author_id)
             else:
                 messages.error(request,"Check password and confirm password")
-                return render(request,"signup.html")
-    return render(request,"signup.html")
+                return render(request,"author_signup.html")
+    return render(request,"author_signup.html")
 
 
 
@@ -98,7 +111,7 @@ def login_author(request):
                         return redirect("author-dashboard")
                     else:
                         messages.error(request,"It is for only for User")
-                        return render(request,"login.html")
+                        return render(request,"author_login.html")
                 else:
                     messages.error(request,"Check password")
                     return redirect("author-verification",id=user_data.author_id)
@@ -106,11 +119,11 @@ def login_author(request):
                 try:
                     user_getting = Author.objects.get(author_details=email)
                     messages.error(request,"Check password")
-                    return render(request,"login.html")
+                    return render(request,"author_login.html")
                 except Author.DoesNotExist:
                     messages.error(request,"Create account")
-                    return render(request,"login.html")
-        return render(request,"login.html")
+                    return render(request,"author_login.html")
+        return render(request,"author_login.html")
 
 
   
@@ -192,5 +205,46 @@ def download_book(request,id):
 @login_required(login_url="author-login")
 def logout_user(request):
     auth_logout(request)
-    messages.success(request, 'Logout')
+    messages.success(request,'Logout')
     return redirect("author-login")
+
+
+def forgot_password(request):
+    if request.method == "POST":
+        email_id = request.POST.get("email")
+        try:
+            user=Author.objects.get(author_details=email_id)
+            user_send = ResetPwVerification.objects.filter(user_id=user)
+            if not user_send:
+                email=ResetPwVerification.objects.create(user_id=user)
+                Reset_send_email(email_id,f"http://127.0.0.1:8000/author/reset_password/{email}")
+                return redirect("author-login")
+            else:
+                print(user_send[0])
+                Reset_send_email(email_id,f"http://127.0.0.1:8000/author/reset_password/{user_send[0]}")
+                return redirect("author-login")
+        except Author.DoesNotExist:
+            return redirect("author-signup")
+    return render(request,"forgot_password.html")
+
+def reset_password(request,id):
+    try:
+        user_id = ResetPwVerification.objects.get(pw_id=id)
+        user_data = Author.objects.get(author_details__email=user_id.user_id)
+        user = Custom_User.objects.get(email=user_data)
+        if request.method == "POST":
+            password = request.POST.get("password")
+            confirm_password = request.POST.get("confirm_password")
+            if password == confirm_password:
+                user.set_password(password)
+                user.save()
+                user_id.delete()
+                messages.success(request,"Password reset successfull")
+                return redirect("author-login")
+            else:
+                messages.error(request,"Check password")
+                return redirect("author-reset_password",id=id)
+            
+    except ResetPwVerification.DoesNotExist:
+       return HttpResponse("This link has been expired")
+    return render(request,"reset_password.html")

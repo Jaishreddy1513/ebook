@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Italianno&display=swap");
+/* @import url('https://fonts.googleapis.com/css2?family=Italianno&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap'); */
 /* @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"); */
 
 * {
@@ -25,6 +26,8 @@ nav {
   justify-content: center;
   align-items: center;
   position: sticky;
+  z-index: 120;
+  background: #f2ebd8;
   top: 0;
 }
 
@@ -157,7 +160,7 @@ nav {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 40px;
+  gap: 0px;
   height: 80vh;
   background-color: #371d0e;
   /* border: 2px solid greenyellow; */
@@ -170,6 +173,7 @@ nav {
   display: flex;
   justify-content: center;
   align-items: center;
+
 }
 
 .signup-img div {
@@ -179,6 +183,7 @@ nav {
   display: flex;
   justify-content: center;
   align-items: center;
+
 }
 
 .signup-img img {
@@ -210,7 +215,7 @@ nav {
   background: transparent;
   border: none;
   border-bottom: 2px solid #f2ebd8;
-  
+
 }
 
 .signup-container form input {
@@ -226,10 +231,11 @@ nav {
   color: white;
   border-radius: 25px;
   border: none;
+  font-weight: 800;
 }
 
-.signup-container form [type="submit"]:hover{
-    background:#FF4500;
+.signup-container form [type="submit"]:hover {
+  background: #FF4500;
 }
 
 
@@ -243,9 +249,134 @@ nav {
   align-items: center;
   gap: 10px;
   border: 2px solid #f2ebd8;
+  border-radius: 20px;
 }
 
+.signup-container form div a {
+  margin: 10px 0;
+  color: #f2ebd8;
+}
+
+
 .signup-container {
+  flex-basis: 50%;
+  height: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 40px;
+  
+}
+
+
+/* author signup */
+
+.author_signup-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  height: 80vh;
+  background-color: #f2ebd8;
+  /* border: 2px solid greenyellow; */
+}
+
+.author_signup-img {
+  flex-basis: 40%;
+  height: 90%;
+  background-color: #f2ebd8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border: 2px solid black; */
+
+}
+
+.author_signup-img div {
+  width: 60%;
+  height: 90%;
+  background-color: #f2ebd8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.author_signup-img img {
+  width: 350px;
+  height: 350px;
+  border-radius: 10px;
+}
+
+.author_signup-container form label {
+
+  display: block;
+  font-size: large;
+  color: black;
+  width: 80%;
+  text-align: start;
+}
+
+.author_signup-container form div input,
+.author_signup-container form div {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: black;
+}
+
+.author_signup-container form div a {
+  margin: 10px 0;
+  color: #371d0e;
+}
+
+
+
+.author_signup-container form div input {
+  width: 80%;
+  height: 30px;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid black;
+
+}
+
+.author_signup-container form input {
+  width: 80%;
+  height: 40px;
+}
+
+.author_signup-container form [type="submit"] {
+  width: 35%;
+  height: 40px;
+  background: #FFA500;
+  color: black;
+  border-radius: 25px;
+  border: none;
+  font-weight: 800;
+}
+
+.author_signup-container form [type="submit"]:hover {
+  background: #FF4500;
+}
+
+
+
+.author_signup-container form {
+  height: 90%;
+  width: 100%;
+  display: flex;
+  color: #371d0e;
+  border-radius: 15px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border: 2px solid #371d0e;
+}
+
+.author_signup-container {
   flex-basis: 50%;
   height: 90%;
   display: flex;
@@ -292,8 +423,7 @@ nav {
 
 /* books */
 
-.genre-book {
-}
+.genre-book {}
 
 .book img {
   height: 250px;
@@ -312,6 +442,7 @@ nav {
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
   justify-content: center;
   background: #f2ebd8;
   gap: 20px;
@@ -341,8 +472,7 @@ nav {
   flex-wrap: wrap;
 }
 
-.liked_books-container {
-}
+.liked_books-container {}
 
 /* liked book */
 .liked_list {
@@ -359,7 +489,7 @@ nav {
 .liked_book {
   padding: 30px;
   width: 90%;
-  /* border: yellowgreen solid 2px;/ */
+  /* border: 2px solid red; */
   height: 200px;
   display: flex;
   justify-content: space-evenly;
@@ -374,12 +504,12 @@ nav {
 }
 
 .liked_book div {
-  padding: 20px 40px;
+  padding: 0px 40px;
   height: 100%;
   flex-basis: 60%;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: start;
   gap: 5px;
 }
@@ -431,22 +561,18 @@ nav {
   height: 100%;
   flex-basis: 50%;
   display: flex;
-  justify-content: start;
+  justify-content: space-between;
   flex-direction: column;
   align-items: start;
-  padding: 50px;
-  gap: 30px;
+  padding: 20px 50px;
   background-color: white;
 }
 
-.details h1 {
-}
+.details h1 {}
 
-.details h3 {
-}
+.details h3 {}
 
-.details p {
-}
+.details p {}
 
 .details div {
   width: 100%;
@@ -463,6 +589,7 @@ nav {
   height: 100%;
   border-radius: 25px;
 }
+
 .details div button a {
   color: white;
   text-decoration: none;
@@ -591,6 +718,7 @@ input::-webkit-inner-spin-button {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-align: center;
   background: #f2ebd8;
   gap: 20px;
   border-radius: 20px;
@@ -627,11 +755,12 @@ input::-webkit-inner-spin-button {
   /* border: red 2px solid; */
   height: 100%;
   display: flex;
-  padding: 40px;
+  padding: 20px 40px;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  /* justify-content: center; */
   gap: 10px;
+  overflow-y: scroll;
 }
 
 .author_book_create-form form label {
@@ -676,16 +805,66 @@ input::-webkit-inner-spin-button {
 .author_view-container .details div a {
   color: white;
   text-decoration: none;
+
+}
+
+
+.details p{
+  height: 200px;
+  overflow-y: scroll;
+}
+
+.details p::-webkit-scrollbar{
+  display: block;
+  width: 10px;
+}
+.details p::-webkit-scrollbar-thumb{
+  background-color: #f2ebd8;
+  border-radius: 10px;
+  border: 1px solid black;
 }
 
 .author_view-container .details div .delete_btn {
   background: red;
 }
 
-/* Styles for screens smaller than 600px */
-@media (max-width: 600px) {
-  .my-element {
-    font-size: 14px;
-    /* Other styles for small screens */
-  }
+.forgot_password_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+
+}
+
+.forgot_password_container form {
+  height: 80%;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+}
+
+.forgot_password_container form div label {
+  display: block;
+  font-size: 20px;
+}
+
+.forgot_password_container form div input {
+  width: 100%;
+  height: 30px;
+  padding: 0 10px;
+}
+
+.forgot_password_container form [type="submit"] {
+  width: 80%;
+  background: #371d0e;
+  color: white;
+  height: 50px;
+  border-radius: 25px;
+}
+
+.forgot_password_container form div {
+  width: 100%;
 }

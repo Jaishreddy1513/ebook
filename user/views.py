@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
-from .models import User,Custom_User,UserVerification,User_like_book
+from .models import User,Custom_User,UserVerification,User_like_book,ResetPwVerification
 from author.models import BookPublished,BooksDownload
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect,HttpResponse
 from django.contrib.auth import authenticate,login as auth_login,logout as auth_logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -24,10 +24,21 @@ def send_email(recipient_email,otp):
         recipient_list,
         fail_silently=False,
     )
+    
+    
+def Reset_send_email(recipient_email,reset_link):
+    subject = 'Welcome to Our Website!'
+    message = f'Click the link below to reset your password:\n\n{reset_link}\n\nIf you did not request this, please ignore this email.'
+    from_email = settings.DEFAULT_FROM_EMAIL # Uses the default from settings.py
+    recipient_list = [recipient_email] # Must be a list
 
-
-
-
+    send_mail(
+        subject,
+        message,
+        from_email,
+        recipient_list,
+        fail_silently=False,
+    )
 
 
 
@@ -103,7 +114,6 @@ def login(request):
                 if user.is_user:
                     try:
                         user_data = User.objects.get(user_details=user)
-                    
                     except User.DoesNotExist:
                         return redirect("author-dashboard")
                     if user.is_verified:
@@ -139,7 +149,9 @@ def dashboard(request):
 def like_book(request,id):
     user = User.objects.get(user_details=request.user)
     book =BookPublished.objects.get(book_id=id)
-    User_like_book.objects.create(user_id = user,book_id=book)
+    data = BookPublished.objects.filter(book_id=id)
+    if data:
+        User_like_book.objects.create(user_id=user,book_id=book)
     messages.success(request, 'Book like')
     destination = request.META.get('HTTP_REFERER', '/')
     return HttpResponseRedirect(destination)
@@ -149,7 +161,7 @@ def like_book(request,id):
 def unlike_book(request,id):
     user = User.objects.get(user_details=request.user)
     book =BookPublished.objects.get(book_id=id)
-    like=User_like_book.objects.get(user_id = user,book_id=book)
+    like=User_like_book.objects.get(user_id=user,book_id=book)
     like.delete()
     messages.success(request, 'Book Unlike')
     destination = request.META.get('HTTP_REFERER', '/')
@@ -197,3 +209,46 @@ def logout_user(request):
     auth_logout(request)
     messages.success(request, 'Logout')
     return redirect("login")
+
+
+
+def forgot_password(request):
+    if request.method == "POST":
+        email_id = request.POST.get("email")
+        try:
+            user=User.objects.get(user_details=email_id)
+            user_send = ResetPwVerification.objects.filter(user_id=user)
+            if not user_send:
+                email=ResetPwVerification.objects.create(user_id=user)
+                Reset_send_email(email_id,f"http://127.0.0.1:8000/reset_password/{str(email)}")
+                return redirect("login")
+            else:
+                print(user_send[0])
+                Reset_send_email(email_id,f"http://127.0.0.1:8000/author/reset_password/{user_send[0]}")
+                return redirect("author-login")
+        except User.DoesNotExist:
+            return redirect("signup")
+    return render(request,"forgot_password.html")
+
+def reset_password(request,id):
+    try:
+        user_id = ResetPwVerification.objects.get(pw_id=id)
+        user_data = User.objects.get(user_details__email=user_id.user_id)
+        user = Custom_User.objects.get(email=user_data)
+        if request.method == "POST":
+            password = request.POST.get("password")
+            confirm_password = request.POST.get("confirm_password")
+            if password == confirm_password:
+                user.set_password(password)
+                user.save()
+                user_id.delete()
+                messages.success(request,"Password reset successfull")
+                return redirect("login")
+
+            else:
+                messages.error(request,"Check password")
+                return redirect("reset_password",id=id)
+            
+    except ResetPwVerification.DoesNotExist:
+       return HttpResponse("This link has been expired")
+    return render(request,"reset_password.html")

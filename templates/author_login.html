@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Author Login{% endblock %}
+{% load static %}
+{% block content %}
+
+
+<div class="author_signup-main">
+  <div class="author_signup-img">
+    <div>
+      <img src="{% static 'image/author_signup_img.jpeg' %}" alt="" />
+    </div>
+  </div>
+  <div class="author_signup-container">
+    <form action="" method="post">
+            <h2>AUTHOR LOGIN</h2>
+            {% csrf_token %}
+            <div>
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" required>
+            </div>
+            <div>
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" required>
+            </div>
+            <div>
+              <a href="{% url "author-forgot_password" %}">Forgot password</a>
+            </div>
+            <input type="submit" value="submit">
+        </form>
+    </div>
+</div>
+
+{% endblock %}

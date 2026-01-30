@@ -1,0 +1,40 @@
+{% extends "base.html" %} {% block title %}Author Signup{% endblock %} 
+{% load static%} {% block content %}
+
+<div class="author_signup-main">
+  <div class="author_signup-img">
+    <div>
+      <img src="{% static 'image/author_signup_img.jpeg' %}" alt="" />
+    </div>
+  </div>
+  <div class="author_signup-container">
+    <form action="" method="post">
+      <h2>AUTHOR SIGN UP</h2>
+      {% csrf_token %}
+      <div>
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name" required />
+      </div>
+      <div>
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" required />
+      </div>
+      <div>
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" required />
+      </div>
+      <div>
+        <label for="confirm_password">confirm password</label>
+        <input
+          type="password"
+          name="confirm_password"
+          id="confirm_password"
+          required
+        />
+      </div>
+      <input type="submit" value="submit" />
+    </form>
+  </div>
+</div>
+
+{% endblock %}

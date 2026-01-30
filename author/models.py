@@ -40,7 +40,7 @@ class BookPublished(models.Model):
     book_name = models.CharField(max_length=500,null=False)
     book_title = models.CharField()
     book_description = models.CharField()
-    book_genres = models.CharField(choices=[("Fiction","FICTION"),("Fantasy","FANTASY"),("Mystery","MYSTERY"),("Romance","ROMANCE"),("Science","SCIENCE"),("Technology","TECHNOLOGY"),("Business","BUSINESS"),("Self-Help","SELF-HELP")])
+    book_genres = models.CharField(choices=[("Fiction","FICTION"),("Fantasy","FANTASY"),("Mystery","MYSTERY"),("Romance","ROMANCE"),("Biography","BIOGRAPHY"),("Technology","TECHNOLOGY"),("Business","BUSINESS"),("Self-Help","SELF-HELP")])
     book_cover_page = models.ImageField(upload_to=book_path, height_field=None, width_field=None, max_length=None)
     book_pdf = models.FileField(upload_to=book_pdf_path,null=False)
     book_download = models.IntegerField(default=0)
@@ -53,3 +53,11 @@ class BookPublished(models.Model):
 class BooksDownload(models.Model):
     user_id = models.ForeignKey("user.User", on_delete=models.CASCADE, null=True, blank=True)
     book_id = models.ForeignKey("author.BookPublished", on_delete=models.CASCADE, null=True, blank=True)
+
+
+class ResetPwVerification(models.Model):
+    pw_id = models.UUIDField(default=uuid.uuid4,primary_key=True)
+    user_id = models.OneToOneField("author.Author",on_delete=models.CASCADE)
+    
+    def __str__(self):
+        return f"{self.pw_id}"

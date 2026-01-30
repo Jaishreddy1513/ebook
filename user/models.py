@@ -32,18 +32,27 @@ class User(models.Model):
     user_id = models.UUIDField(default=uuid.uuid4,primary_key=True)
     user_name = models.CharField(max_length=150,null=False)
     user_details = models.OneToOneField("user.Custom_User", on_delete=models.CASCADE)
-    user_created = models.DateField(auto_now_add=True)
+    user_created = models.DateField(auto_now_add=True)   
     
     def __str__(self):
         return self.user_details.email
     
     
+
 class UserVerification(models.Model):
     user_data = models.OneToOneField("user.User",primary_key=True,on_delete=models.CASCADE)
     otp = models.IntegerField()
     
     def __str__(self):
         return self.user_data.email
+    
+    
+class ResetPwVerification(models.Model):
+    pw_id = models.UUIDField(default=uuid.uuid4,primary_key=True)
+    user_id = models.OneToOneField("user.User",on_delete=models.CASCADE)
+    
+    def __str__(self):
+        return f"{self.pw_id}"
     
     
 class User_like_book(models.Model):
