@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-ldh44&ic$8@x@a%#^hi(=q!rl313mp30z56p9k0xth#a(7&+*n
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '.vercel.app', '.now.sh']
 
 # CSRF_TRUSTED_ORIGINS = ['https://confidentiality-strap-cycles-gabriel.trycloudflare.com']
 
